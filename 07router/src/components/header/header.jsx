@@ -1,28 +1,93 @@
-// Header.js
-import React from 'react';
-import { Routes, Route , Link } from 'react-router-dom';
-import Home from '../home';
-import About from '../about';
-import Context from '../context';
+import { Link, NavLink } from "react-router-dom";
 
-function Header() {
-
+export default function Header() {
   return (
+      <header className="shadow sticky z-50 top-0">
+          <nav className="bg-white border-gray-200 px-4 lg:px-6 py-2.5">
+              <div className="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl">
+                  <Link to="/" className="flex items-center">
+                      <img
+                          src="https://alexharkness.com/wp-content/uploads/2020/06/logo-2.png"
+                          className="mr-3 h-12"
+                          alt="Logo"
+                      />
+                  </Link>
+                  <div className="flex items-center lg:order-2">
+                      <Link
+                          to="#"
+                          className="text-gray-800 hover:bg-gray-50 focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 mr-2 focus:outline-none"
+                      >
+                          Log in
+                      </Link>
+                      <Link
+                          to="#"
+                          className="text-white bg-orange-700 hover:bg-orange-800 focus:ring-4 focus:ring-orange-300 font-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 mr-2 focus:outline-none"
+                      >
+                          Get started
+                      </Link>
+                  </div>
+                  <div
+                      className="hidden justify-between items-center w-full lg:flex lg:w-auto lg:order-1"
+                      id="mobile-menu-2"
+                  >
+                      <ul className="flex flex-col mt-4 font-medium lg:flex-row lg:space-x-8 lg:mt-0">
+                          <li>
+                              <NavLink
+                              to='/'
+                                  className={({isActive , isPending}) =>
+                                  isPending ? "text-gray-800" : isActive ? "text-orange-600" : ""
+                                }
+                              >
+                                  Home
+                              </NavLink>
+                          </li>
 
+                          <li>
+                              <NavLink
+                              to='/about'
+                                  className={({isActive , isPending}) =>
+                                  isPending ? "text-gray-800" : isActive ? "text-orange-600" : ""
+                                }
+                              >
+                                  about
+                              </NavLink>
+                          </li>
 
-    <div>
-       <div className='text-yellow-500 flex gap-x-10 float-right font-bold mr-2'>
-       <Link to='/'>home</Link>
-        <Link to='/about'>about</Link>
-        <Link to='/context'>context</Link>
-       </div>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/context" element={<Context />} />
-      </Routes>
-    </div>
+                          <li>
+                              <NavLink
+                              to='context'
+                                  className={({isActive , isPending}) =>
+                                  isPending ? "text-gray-800" : isActive ? "text-orange-600" : ""
+                                }
+                              >
+                                  context
+                              </NavLink>
+                          </li>
+                          
+                          <li>
+                              <NavLink
+                              to='user'
+                                  className={({isActive , isPending}) =>
+                                  isPending ? "text-gray-800" : isActive ? "text-orange-600" : ""
+                                }
+                              >
+                                  user
+                              </NavLink>
+                          </li>
+                          
+                          <NavLink
+                              to='github'
+                                  className={({isActive , isPending}) =>
+                                  isPending ? "text-gray-800" : isActive ? "text-orange-600" : ""
+                                }
+                              >
+                                  github
+                              </NavLink>
+                      </ul>
+                  </div>
+              </div>
+          </nav>
+      </header>
   );
 }
 
-export default Header;
